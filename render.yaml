@@ -10,8 +10,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.12
-    ports:
-      - port: 8000
 
   - type: web
     name: frontend
