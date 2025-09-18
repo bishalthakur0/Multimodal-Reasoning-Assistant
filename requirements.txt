@@ -1,0 +1,9 @@
+torch
+huggingface-hub
+transformers
+clip
+langchain
+fastapi
+uvicorn
+flask
+streamlit

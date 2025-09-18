@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+    autoDeploy: true
+    routes:
+      - path: /
+    numInstances: 1
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.12
+    # Add a port for the backend service
+    ports:
+      - 8000
+
+  - type: web
+    name: frontend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run frontend/app.py --server.port=8501 --server.address=0.0.0.0
+    autoDeploy: true
+    routes:
+      - path: /
+    numInstances: 1
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.12
+      - key: BACKEND_URL
+        value: http://backend:8000
+    # Add a port for the frontend service
+    ports:
+      - 8501
