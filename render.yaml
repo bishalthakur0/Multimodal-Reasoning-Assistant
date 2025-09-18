@@ -12,9 +12,8 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.12
-    # Add a port for the backend service
     ports:
-      - 8000
+      - port: 8000
 
   - type: web
     name: frontend
@@ -31,6 +30,5 @@ services:
         value: 3.9.12
       - key: BACKEND_URL
         value: http://backend:8000
-    # Add a port for the frontend service
     ports:
-      - 8501
+      - port: 8501
