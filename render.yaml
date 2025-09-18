@@ -26,5 +26,3 @@ services:
         value: 3.9.12
       - key: BACKEND_URL
         value: http://backend:8000
-    ports:
-      - port: 8501
